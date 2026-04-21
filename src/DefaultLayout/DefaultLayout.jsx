@@ -4,11 +4,13 @@ import AppFooter from "../Components/AppFooter"
 
 export default function DefaultLayout() {
 
-  return (
-    <>
-        <AppHeader />
-        <Outlet />
-        <AppFooter />   
-    </>
-  )
+    return (
+        <>
+            <AppHeader />
+            <main>
+                <Outlet />
+            </main>
+            <AppFooter />
+        </>
+    )
 }
