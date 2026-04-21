@@ -1,2 +1,12 @@
 @import 'bootstrap';
 @import 'bootstrap-icons';
+
+.img-card {
+    aspect-ratio: 1/1.4;
+    object-position: top;
+    object-fit: contain;
+}
+
+.home-page .card img[src*="interstellar.jpg"] {
+    transform: scale(1.1);
+}
