@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react"
-const API_URL = import.meta.env.VITE_API_URL;
+import { useState, useEffect, useContext } from "react"
 import AppCard from "../Components/AppCard";
+import { GlobalContext } from "../Context/GlobalContext";
+
 
 export default function Homepage() {
-
+    
+    const { api_url } = useContext(GlobalContext);
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        fetch(`${API_URL}/api/movies/index`)
+        fetch(`${api_url}/api/movies/index`)
         .then(res => res.json())
         .then(data => {
             setMovies(data)

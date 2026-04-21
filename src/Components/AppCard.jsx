@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { GlobalContext } from "../Context/GlobalContext";
+
 export default function AppCard({movie}) {
-
-    const { title, director, genre, release_year, abstract, image, created_at, updated_at } = movie;
-
-    const api_image = import.meta.env.VITE_API_IMAGE_URL + image;
+    
+    const { title, director, genre, release_year, abstract, image } = movie;
+    let { api_image } = useContext(GlobalContext);
+    api_image += image;
 
     return (
         <figure className="col d-flex flex-column align-items-start justify-content-center">
@@ -13,7 +17,7 @@ export default function AppCard({movie}) {
                     <figcaption>{director}</figcaption>
                     <small>{release_year} - {genre}</small>
                     <p className="lead">{abstract}</p>
-                    <a href="#" className="btn btn-primary">Scopri di più</a>
+                    <Link to={`/movie/${movie.id}`} className="btn btn-primary">Scopri di più</Link>
                 </div>
             </div>
         </figure>
