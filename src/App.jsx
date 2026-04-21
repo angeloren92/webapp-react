@@ -10,7 +10,7 @@ function App() {
     <GlobalProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DefaultLayout />}>
+          <Route element={<DefaultLayout />}>
             <Route index element={<HomePage />} />
             <Route path="/movie/:id" element={<Movie />} />
           </Route>
