@@ -1,3 +1,4 @@
+// Footer component: site branding and copyright
 export default function AppFooter() {
 
     return (

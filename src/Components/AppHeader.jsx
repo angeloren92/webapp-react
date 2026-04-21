@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// Application header: simple navbar with a link to the homepage
 export default function AppHeader() {
 
     return (

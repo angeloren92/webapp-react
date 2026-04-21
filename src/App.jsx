@@ -4,6 +4,7 @@ import HomePage from "./Pages/HomePage"
 import Movie from "./Pages/Movie"
 import { GlobalProvider } from "./Context/GlobalContext"
 
+// App root: wraps routes with the global provider and default layout
 function App() {
 
   return (

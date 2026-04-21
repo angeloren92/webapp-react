@@ -2,13 +2,14 @@ import { useState, useEffect, useContext } from "react"
 import AppCard from "../Components/AppCard";
 import { GlobalContext } from "../Context/GlobalContext";
 
-
+// Homepage: fetches movie list from API and shows a grid of `AppCard`
 export default function Homepage() {
     
     const { api_url } = useContext(GlobalContext);
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
+        // Fetch the movies from the API and store in state
         fetch(`${api_url}/api/movies/index`)
         .then(res => res.json())
         .then(data => {
