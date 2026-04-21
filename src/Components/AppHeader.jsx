@@ -1,8 +1,12 @@
 export default function AppHeader() {
 
-  return (
-    <>
-        <h1>App Header</h1>
-    </>
-  )
+    return (
+        <>
+            <nav className="navbar navbar-expand-sm bg-body-tertiary">
+                <div className="container">
+                    <a className="navbar-brand" href="#">HomePage</a>
+                </div>
+            </nav>
+        </>
+    )
 }
