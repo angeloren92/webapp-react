@@ -2,7 +2,7 @@ export default function AppFooter() {
 
     return (
         <footer className="container">
-            <div className="d-flex flex-column align-items-center justify-content-center py-4">
+            <div className="d-flex flex-column align-items-center justify-content-center py-5">
                 <div className="footer-logo">
                     <h2>Cine<span>Review</span></h2>
                 </div>

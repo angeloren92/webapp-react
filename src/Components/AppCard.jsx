@@ -12,15 +12,15 @@ export default function AppCard({ movie }) {
         <figure className="col">
             <div className="card h-100 shadow">
                 <div className="img-card overflow-hidden">
-                    <img src={api_image} alt="" className="img-fluid" />
+                    <img src={api_image} alt="" className="img-fluid w-100" />
                 </div>
                 <div className="card-body d-flex flex-column justify-content-between">
-                    <h2 className="h3">{title}</h2>
-                    <div className="mb-2">
-                        <figcaption>Director: {director}</figcaption>
-                        <small>Release: {release_year} - Genre: {genre}</small>
+                    <h2 className="h2 text-center text-uppercase">{title}</h2>
+                    <div className="text-center mb-2">
+                        <figcaption><strong>Director:</strong> {director}</figcaption>
+                        <small><strong>Release:</strong> {release_year} - <strong>Genre:</strong> {genre}</small>
                     </div>
-                    <p className="lead">{abstract}</p>
+                    <p className="lead"><strong>Plot:</strong> {abstract}</p>
                     <Link to={`/movie/${movie.id}`} className="btn btn-outline-primary">Scopri di più</Link>
                 </div>
             </div>
