@@ -1,4 +1,19 @@
+import { useState, useEffect } from "react"
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Homepage() {
+
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        fetch(`${API_URL}/api/movies/index`)
+        .then(res => res.json())
+        .then(data => {
+            setMovies(data)
+        })
+
+    }, []);
+
 
     return (
         <section>
