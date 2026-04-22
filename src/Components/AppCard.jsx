@@ -14,9 +14,9 @@ export default function AppCard({ movie }) {
     return (
         <figure className="col">
             <div className="card h-100 shadow">
-                <div className="img-card overflow-hidden">
+                <Link to={`/movie/${movie.id}`} className="img-card overflow-hidden">
                     <img src={api_image} alt="" className="img-fluid w-100" />
-                </div>
+                </Link>
                 <div className="card-body d-flex flex-column justify-content-between">
                     <h2 className="h2 text-center text-uppercase">{title}</h2>
                     <div className="text-center mb-2">
