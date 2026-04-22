@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import AppVoteStars from "./AppVoteStars.jsx";
 // Movie detail elements: reusable block for the Movie page that
 // displays title, vote, director, year, genre and plot summary.
 export default function AppMovieCardElements({ movie }) {

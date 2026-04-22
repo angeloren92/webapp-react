@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import DefaultLayout from "./Layouts/DefaultLayout"
+import AdminLayout from "./Layouts/AdminLayout"
 import HomePage from "./Pages/HomePage"
-import Movie from "./Pages/Movie"
+import MoviePage from "./Pages/MoviePage"
 import AdminPage from "./Pages/AdminPage"
 import { GlobalProvider } from "./Context/GlobalContext"
 
@@ -18,14 +19,16 @@ function App() {
         <Routes>
           <Route element={<DefaultLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="/movie/:id" element={<Movie />} />
+            <Route path="/movie/:id" element={<MoviePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
 
       <BrowserRouter>
         <Routes>
-          <Route path="/admin" element={<AdminPage />} />
+          <Route element={<AdminLayout />}>
+            <Route path="/admin" element={<AdminPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
 

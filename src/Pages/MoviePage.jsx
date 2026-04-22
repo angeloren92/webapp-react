@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom"
-import { GlobalContext } from "../Context/GlobalContext";
+import { GlobalContext } from "../Context/GlobalContext.jsx";
 import AppReview from "../Components/AppReview.jsx";
 import AppAddReviewForm from "../Components/AppAddReviewForm.jsx";
 
