@@ -31,6 +31,7 @@ export default function Movie() {
                         <div className="col col-12 col-md-7 d-flex flex-column gap-3">
                             <Link to="/" className="btn btn-outline-secondary align-self-end">Back to Movies</Link>
                             <h2 className="h3 text-uppercase">{movie?.title}</h2>
+                            <span>{movie?.average_vote}</span>
                             <figcaption><strong>Director:</strong> {movie?.director}</figcaption>
                             <small><strong>Release Year:</strong> {movie?.release_year}</small>
                             <small><strong>Genre:</strong> {movie?.genre}</small>
