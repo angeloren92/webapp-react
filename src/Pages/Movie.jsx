@@ -1,8 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { GlobalContext } from "../Context/GlobalContext";
 import AppReview from "../Components/AppReview.jsx";
-import AppVoteStars from "../Components/AppVoteStars.jsx";
+import AppAddReviewForm from "../Components/AppAddReviewForm.jsx";
+
+import AppMovieCardElements from "../Components/AppMovieCardelements.jsx";
 
 // Movie page: fetches a single movie by id and shows details + reviews
 export default function Movie() {
@@ -10,6 +12,7 @@ export default function Movie() {
     const [movie, setMovie] = useState(null);
     const id = parseInt(useParams().id);
     const { api_url, api_image } = useContext(GlobalContext);
+    const [addReview, setAddReview] = useState(true);
 
     useEffect(() => {
         // Fetch movie details when component mounts (or id changes)
@@ -25,20 +28,26 @@ export default function Movie() {
             <div className="card">
                 <div className="card-body shadow">
                     <div className="row g-4">
+
                         <div className="col col-12 col-md-5 d-flex align-items-center justify-content-center">
                             <img src={api_image + movie?.image} alt="" className="img-fluid" />
                         </div>
-                        <div className="col col-12 col-md-7 d-flex flex-column gap-3">
-                            <Link to="/" className="btn btn-outline-secondary align-self-end">Back to Movies</Link>
-                            <h2 className="h3 text-uppercase">{movie?.title}</h2>
 
-                            <AppVoteStars vote={movie?.average_vote} />
-                            
-                            <figcaption><strong>Director:</strong> {movie?.director}</figcaption>
-                            <small><strong>Release Year:</strong> {movie?.release_year}</small>
-                            <small><strong>Genre:</strong> {movie?.genre}</small>
-                            <p className=""><strong>Plot:</strong> {movie?.abstract}</p>
+                        <div className="col col-12 col-md-7 d-flex flex-column gap-3">
+                            <AppMovieCardElements movie={movie} api_image={api_image + movie?.image} />
                         </div>
+
+                        <div className="col-12">
+                            <button className="btn btn-warning">Add New Review</button>
+                        </div>
+
+                        {
+                            addReview &&
+                            <div className="col col-12">
+                                <AppAddReviewForm />
+                            </div>
+                        }
+
                         {
                             movie?.reviews?.map(review => (
                                 <AppReview key={review?.id} review={review} />
