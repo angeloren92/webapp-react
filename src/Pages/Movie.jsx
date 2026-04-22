@@ -12,7 +12,7 @@ export default function Movie() {
     const [movie, setMovie] = useState(null);
     const id = parseInt(useParams().id);
     const { api_url, api_image } = useContext(GlobalContext);
-    const [addReview, setAddReview] = useState(true);
+    const [addReview, setAddReview] = useState(false);
 
     useEffect(() => {
         // Fetch movie details when component mounts (or id changes)
@@ -38,13 +38,16 @@ export default function Movie() {
                         </div>
 
                         <div className="col-12">
-                            <button className="btn btn-warning">Add New Review</button>
+                            <button onClick={() => setAddReview(true)} className="btn btn-warning">Add New Review</button>
                         </div>
 
                         {
                             addReview &&
                             <div className="col col-12">
-                                <AppAddReviewForm />
+                                <AppAddReviewForm 
+                                addReview={addReview}
+                                setAddReview={setAddReview}
+                                />
                             </div>
                         }
 
