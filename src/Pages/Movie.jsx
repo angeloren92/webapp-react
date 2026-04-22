@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom"
 import { GlobalContext } from "../Context/GlobalContext";
 import AppReview from "../Components/AppReview.jsx";
+import AppVoteStars from "../Components/AppVoteStars.jsx";
 
 // Movie page: fetches a single movie by id and shows details + reviews
 export default function Movie() {
@@ -17,7 +18,6 @@ export default function Movie() {
             .then(data => {
                 setMovie(data);
             })
-
     }, [id, api_url]);
 
     return (
@@ -31,7 +31,9 @@ export default function Movie() {
                         <div className="col col-12 col-md-7 d-flex flex-column gap-3">
                             <Link to="/" className="btn btn-outline-secondary align-self-end">Back to Movies</Link>
                             <h2 className="h3 text-uppercase">{movie?.title}</h2>
-                            <span>{movie?.average_vote}</span>
+
+                            <AppVoteStars vote={movie?.average_vote} />
+                            
                             <figcaption><strong>Director:</strong> {movie?.director}</figcaption>
                             <small><strong>Release Year:</strong> {movie?.release_year}</small>
                             <small><strong>Genre:</strong> {movie?.genre}</small>
