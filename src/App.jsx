@@ -5,7 +5,11 @@ import Movie from "./Pages/Movie"
 import AdminPage from "./Pages/AdminPage"
 import { GlobalProvider } from "./Context/GlobalContext"
 
-// App root: wraps routes with the global provider and default layout
+// Application entry: sets up global context and routing.
+// User-facing routes are grouped under `DefaultLayout` (header/footer).
+// - `/` -> HomePage: movies listing
+// - `/movie/:id` -> Movie: movie detail and reviews
+
 function App() {
 
   return (
@@ -15,10 +19,16 @@ function App() {
           <Route element={<DefaultLayout />}>
             <Route index element={<HomePage />} />
             <Route path="/movie/:id" element={<Movie />} />
-            <Route path="/admin" element={<AdminPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin" element={<AdminPage />} />
+        </Routes>
+      </BrowserRouter>
+
     </GlobalProvider>
   )
 }

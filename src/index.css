@@ -1,10 +1,15 @@
+/* Imports: third-party styles (Bootstrap + icons) */
 @import 'bootstrap';
 @import 'bootstrap-icons';
 
+
+/* Layout: top navigation sizing */
 .navbar {
     height: 80px;
 }
 
+
+/* Cards: image card aspect, hover and shadow behavior */
 .img-card {
     aspect-ratio: 1/1.4;
     object-fit: cover;
@@ -18,19 +23,28 @@
 }
 
 .card-hover:hover {
+    /* custom cursor and subtle scale on hover */
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%2300D1FF' class='bi bi-eye-fill' viewBox='0 0 16 16'%3E%3Cpath d='M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0'/%3E%3Cpath d='M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7'/%3E%3C/svg%3E") 12 12, auto;
     transform: scale(1.02);
     box-shadow: 0 0 10px #00D1FF;
 }
 
+
+/* Images: specific image tweaks */
 .img-card img[src*="interstellar.jpg"] {
     transform: scale(1.1);
 }
 
+
+/* Modal overlay */
 .modal {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+
+/* Rating: fractional star fill using CSS variable `--percent`
+   - Set `--percent` on the `.rating` element inline to control fill
+   - Uses background-clip:text to color icons proportionally */
 .rating {
     display: inline-flex;
     background: linear-gradient(90deg,

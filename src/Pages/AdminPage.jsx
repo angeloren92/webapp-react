@@ -1,7 +1,7 @@
 export default function AdminPage() {
-    
+
     return (
-        <section className="admin-page bg-body-secondary py-3 py-md-5">
+        <section className="admin-page bg-body-secondary min-vh-100 py-3 py-md-5">
             <div className="container">
                 <h1 className="text-center pb-3 pb-md-5">Admin Dashboard</h1>
                 <div className="row">

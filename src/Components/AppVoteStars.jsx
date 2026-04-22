@@ -1,3 +1,6 @@
+// Star rating display: shows five star icons and uses CSS `--percent`
+// to control a fractional fill based on the `vote` prop.
+
 export default function AppVoteStars({ vote }) {
 
     const numericVote = parseFloat(vote).toFixed(2) || 0;

@@ -1,5 +1,6 @@
+// Review form component: simple UI to collect reviewer name, rating
+// and review text. Submission behavior is not implemented here.
 export default function AppAddReviewForm( { addReview, setAddReview } ) {
-
 
     return (
         <div className="card card-body shadow">
