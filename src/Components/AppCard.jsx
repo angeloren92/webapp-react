@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalContext";
 
@@ -7,32 +7,45 @@ import { GlobalContext } from "../Context/GlobalContext";
 export default function AppCard({ movie }) {
 
     const { title, director, genre, release_year, abstract, image } = movie;
+    const [modal, setmodal] = useState(false);
     // Get base image URL from global context and append movie image path
     let { api_image } = useContext(GlobalContext);
     api_image += image;
 
     return (
-        <figure className="col">
-            <div className="card h-100 shadow">
-                <Link to={`/movie/${movie.id}`} className="img-card overflow-hidden">
-                    <img src={api_image} alt="" className="img-fluid w-100" />
-                </Link>
-                <div className="card-body d-flex flex-column justify-content-between">
-                    <h2 className="h2 text-center text-uppercase">{title}</h2>
-                    <div className="text-center mb-2">
-                        <figcaption>
-                            <strong className="text-muted">Director: </strong> 
-                            {director}</figcaption>
-                        <small>
-                            <strong className="text-muted">Release:</strong> {release_year} - 
-                            <strong className="text-muted">Genre:</strong> {genre}</small>
+        <>
+            <figure className="col">
+                <div className="card card-hover h-100">
+                    <div className="card-body d-flex flex-column justify-content-between">
+                        <h2 className="h2 text-center text-uppercase">{title}</h2>
                     </div>
-                    <p className="lead">
-                        <strong className="text-muted">Plot: </strong> 
-                        {abstract}</p>
-                    <Link to={`/movie/${movie.id}`} className="btn btn-outline-primary">Scopri di più</Link>
+                    <div onClick={() => setmodal(true)} className="img-card overflow-hidden">
+                        <img src={api_image} alt="" className="img-fluid w-100" />
+                    </div>
                 </div>
-            </div>
-        </figure>
+            </figure>
+            {modal && (
+                <div className="modal show d-block" tabIndex="-1">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h3 className="modal-title text-uppercase">{title}</h3>
+                                <button type="button" className="btn-close" onClick={() => setmodal(false)}></button>
+                            </div>
+                            <div className="modal-body">
+                                <p><strong>Director:</strong> {director}</p>
+                                <p><strong>Release:</strong> {release_year}</p>
+                                <p><strong>Genre:</strong> {genre}</p>
+                                <p><strong>Plot:</strong> {abstract}</p>
+                                <div className="d-flex justify-content-center gap-3">
+                                    <Link to={`/movie/${movie.id}`} className="btn btn-primary w-25">More...</Link>
+                                    <button type="button" className="btn btn-outline-secondary w-25" onClick={() => setmodal(false)}>Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
     )
 }

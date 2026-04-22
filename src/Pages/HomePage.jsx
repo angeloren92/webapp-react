@@ -20,9 +20,9 @@ export default function Homepage() {
 
 
     return (
-        <section className="home-page">
+        <section className="home-page bg-body-secondary py-3 py-md-5">
             <div className="container">
-                <h1 className="text-center my-3 my-md-5">Benvenuti su CineReview</h1>
+                <h1 className="text-center pb-3 pb-md-5">Benvenuti su CineReview</h1>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                     {movies.map(movie => (
                         <AppCard key={movie.id} 
