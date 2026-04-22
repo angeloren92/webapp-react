@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import AppCard from "../Components/AppCard";
+import AppCard from "../Components/User/AppCard";
 import { GlobalContext } from "../Context/GlobalContext";
 
 // Homepage: fetches movie list from API and shows a grid of `AppCard`

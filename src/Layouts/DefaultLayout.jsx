@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
-import AppHeader from "../Components/AppHeader"
-import AppFooter from "../Components/AppFooter"
+import AppHeader from "../Components/User/AppHeader"
+import AppFooter from "../Components/User/AppFooter"
 
 // Default layout used by routes: header, outlet for pages, footer
 export default function DefaultLayout() {

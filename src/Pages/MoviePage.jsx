@@ -1,10 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom"
 import { GlobalContext } from "../Context/GlobalContext.jsx";
-import AppReview from "../Components/AppReview.jsx";
-import AppAddReviewForm from "../Components/AppAddReviewForm.jsx";
-
-import AppMovieCardElements from "../Components/AppMovieCardelements.jsx";
+import AppReview from "../Components/User/AppReview.jsx";
+import AppAddReviewForm from "../Components/User/AppAddReviewForm.jsx";
+import AppMovieCardElements from "../Components/User/AppMovieCardelements.jsx";
 
 // Movie page: fetches a single movie by id and shows details + reviews
 export default function Movie() {

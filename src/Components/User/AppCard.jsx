@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { GlobalContext } from "../Context/GlobalContext";
+import { GlobalContext } from "../../Context/GlobalContext";
 import AppcardModal from "./AppCardModal";
 
 // Movie card used on the homepage
