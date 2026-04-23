@@ -2,7 +2,7 @@
 // (links to the movie detail page or closing the modal).
 import { Link } from "react-router-dom";
 
-export default function AppcardModal({ movie, modal, setmodal }) {
+export default function AppModal({ movie, modal, setmodal }) {
 
     const { title, director, genre, release_year, abstract } = movie;
     

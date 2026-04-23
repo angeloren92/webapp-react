@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalContext";
-import AppcardModal from "./AppCardModal";
+import AppModal from "./AppModal";
 
 // Movie card used on the homepage
 // Props: `movie` -> movie object with fields like title, director, image, etc.
-export default function AppCard({ movie }) {
+export default function AppMovieCard({ movie }) {
 
     const { title, director, genre, release_year, abstract, image } = movie;
     const [modal, setmodal] = useState(false);
@@ -25,7 +25,7 @@ export default function AppCard({ movie }) {
                 </div>
             </figure>
             {modal && (
-                <AppcardModal
+                <AppModal
                     movie={movie}
                     modal={modal}
                     setmodal={setmodal}

@@ -21,11 +21,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/movie/:id" element={<MoviePage />} />
           </Route>
-        </Routes>
-      </BrowserRouter >
 
-      <BrowserRouter>
-        <Routes>
           <Route element={<AdminLayout />}>
             <Route index path="/admin" element={<AdminPage />} />
           </Route>

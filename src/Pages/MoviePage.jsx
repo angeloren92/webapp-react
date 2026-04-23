@@ -46,6 +46,7 @@ export default function Movie() {
                                 <AppAddReviewForm 
                                 addReview={addReview}
                                 setAddReview={setAddReview}
+                                movie_id={movie?.id}
                                 />
                             </div>
                         }

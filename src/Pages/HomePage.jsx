@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import AppCard from "../Components/User/AppCard";
+import AppMovieCard from "../Components/User/AppMovieCard";
 import { GlobalContext } from "../Context/GlobalContext";
 
 // Homepage: fetches movie list from API and shows a grid of `AppCard`
@@ -25,7 +25,7 @@ export default function Homepage() {
                 <h1 className="text-center pb-3 pb-md-5">Benvenuti su CineReview</h1>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                     {movies.map(movie => (
-                        <AppCard key={movie.id} 
+                        <AppMovieCard key={movie.id} 
                         movie={movie}
                         />
                     ))}
