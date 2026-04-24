@@ -27,7 +27,7 @@ export default function AppAddReviewForm({ setAddReview, movie_id, handleHttpCal
                     if (!res.ok) {
                         throw data;
                     }
-                    setMessage({type: 'success', message: data.message});
+                    setMessage({ type: 'success', message: data.message });
                     return data;
                 })
             })
@@ -41,7 +41,7 @@ export default function AppAddReviewForm({ setAddReview, movie_id, handleHttpCal
                 });
             })
             .catch(err => {
-                setMessage({type: 'danger', message: err.error});
+                setMessage({ type: 'danger', message: err.error });
             })
         setShowMessage(true)
     }
@@ -53,11 +53,11 @@ export default function AppAddReviewForm({ setAddReview, movie_id, handleHttpCal
             <form action="" className="row" onSubmit={handleForm}>
                 <div className="col col-12 col-md-6">
                     <label htmlFor="name" className="form-label">Reviewer Name</label>
-                    <input type="text" id="name" className="form-control" placeholder="Your name..." value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
+                    <input type="text" id="name" className="form-control" placeholder="Your name..." value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required />
                 </div>
                 <div className="col col-12 col-md-6">
                     <label htmlFor="vote" className="form-label">Rating</label>
-                    <select name="vote" id="rating" className="mb-3 form-select" onChange={e => setFormData({ ...formData, vote: e.target.value })}>
+                    <select name="vote" id="rating" className="mb-3 form-select" onChange={e => setFormData({ ...formData, vote: e.target.value })} required>
                         <option value="" hidden>Select Rating</option>
                         <option value="5">5 Stars</option>
                         <option value="4">4 Stars</option>
@@ -69,7 +69,7 @@ export default function AppAddReviewForm({ setAddReview, movie_id, handleHttpCal
                 <div className="col col-12 mb-3">
                     <label htmlFor="review" className="form-label">Review</label>
                     <textarea id="review" className="form-control" placeholder="Write your review here..." rows="4" value={formData.text}
-                        onChange={e => setFormData({ ...formData, text: e.target.value })}></textarea>
+                        onChange={e => setFormData({ ...formData, text: e.target.value })} required></textarea>
                 </div>
                 <div className="d-flex justify-content-center gap-3">
 

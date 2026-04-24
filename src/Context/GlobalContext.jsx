@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react"
 
+
 // Global context to share API base urls across the app
 export const GlobalContext = createContext();
 
@@ -13,8 +14,9 @@ export const GlobalProvider = ({ children }) => {
         type: '',
         message: ''
     });
-    console.log(message)
     const [showMessage, setShowMessage] = useState(false)
+
+    const [showLoader, setShowLoader] = useState(false);
 
     return (
         <GlobalContext.Provider
@@ -24,7 +26,9 @@ export const GlobalProvider = ({ children }) => {
                 message,
                 setMessage,
                 showMessage,
-                setShowMessage
+                setShowMessage,
+                showLoader,
+                setShowLoader
                 }}>
             {children}
         </GlobalContext.Provider>
