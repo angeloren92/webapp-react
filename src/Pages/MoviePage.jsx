@@ -11,9 +11,9 @@ export default function Movie() {
 
     const [movie, setMovie] = useState(null);
     const id = parseInt(useParams().id);
-    const { api_url, api_image, message, setShowMessage, setMessage } = useContext(GlobalContext);
+    const { api_url, api_image } = useContext(GlobalContext);
     const [addReview, setAddReview] = useState(false);
-    
+
     function handleHttpCall() {
         fetch(`${api_url}/api/movies/${id}`)
             .then(res => res.json())
@@ -24,50 +24,51 @@ export default function Movie() {
     // Fetch the movie from the API and store in state
     useEffect(() => {
         handleHttpCall()
-    }, [setShowMessage]);
+    }, [handleHttpCall]);
 
     return (
-        <div className="container my-5">
-            <div className="card">
-                <div className="card-body shadow">
-                    <div className="row g-4">
+        <>
+            <div className="container my-5">
+                <div className="card">
+                    <div className="card-body shadow">
+                        <div className="row g-4">
 
-                        {
-                            message && <AppMessage message={message}></AppMessage>
-                        }
-
-                        <div className="col col-12 col-md-5 d-flex align-items-center justify-content-center">
-                            <img src={api_image + movie?.image} alt="" className="img-fluid" />
-                        </div>
-
-                        <div className="col col-12 col-md-7 d-flex flex-column gap-3">
-                            <AppMovieCardElements movie={movie} api_image={api_image + movie?.image} />
-                        </div>
-
-                        <div className="col-12">
-                            <button onClick={() => setAddReview(true)} className="btn btn-warning">Add New Review</button>
-                        </div>
-
-                        {
-                            addReview &&
-                            <div className="col col-12">
-                                <AppAddReviewForm
-                                    addReview={addReview}
-                                    setAddReview={setAddReview}
-                                    movie_id={movie?.id}
-                                    handleHttpCall={handleHttpCall}
-                                />
+                            <div className="col col-12 col-md-5 d-flex align-items-center justify-content-center">
+                                <img src={api_image + movie?.image} alt="" className="img-fluid" />
                             </div>
-                        }
 
-                        {
-                            movie?.reviews?.map(review => (
-                                <AppReview key={review?.id} review={review} />
-                            ))
-                        }
+                            <div className="col col-12 col-md-7 d-flex flex-column gap-3">
+                                <AppMovieCardElements movie={movie} api_image={api_image + movie?.image} />
+                            </div>
+
+                            <div className="col-12">
+                                <button onClick={() => setAddReview(true)} className="btn btn-warning">Add New Review</button>
+                            </div>
+
+                            {
+                                addReview &&
+                                <div className="col col-12">
+                                    <AppAddReviewForm
+                                        addReview={addReview}
+                                        setAddReview={setAddReview}
+                                        movie_id={movie?.id}
+                                        handleHttpCall={handleHttpCall}
+                                    />
+                                </div>
+                            }
+
+                            {
+                                movie?.reviews?.map(review => (
+                                    <AppReview key={review?.id} review={review} />
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <AppMessage></AppMessage>
+        </>
+
     )
 }

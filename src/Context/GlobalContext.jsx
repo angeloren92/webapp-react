@@ -9,7 +9,11 @@ export const GlobalProvider = ({ children }) => {
     const api_url = import.meta.env.VITE_API_URL;
     const api_image = import.meta.env.VITE_API_IMAGE_URL;
 
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState({
+        type: '',
+        message: ''
+    });
+    console.log(message)
     const [showMessage, setShowMessage] = useState(false)
 
     return (

@@ -27,7 +27,7 @@ export default function AppAddReviewForm({ setAddReview, movie_id, handleHttpCal
                     if (!res.ok) {
                         throw data;
                     }
-                    setMessage(data.message)
+                    setMessage({type: 'success', message: data.message});
                     return data;
                 })
             })
@@ -41,8 +41,7 @@ export default function AppAddReviewForm({ setAddReview, movie_id, handleHttpCal
                 });
             })
             .catch(err => {
-                setMessage(err.error);
-                console.log(err);
+                setMessage({type: 'danger', message: err.error});
             })
         setShowMessage(true)
     }
