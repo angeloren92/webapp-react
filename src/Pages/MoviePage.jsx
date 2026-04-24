@@ -4,29 +4,37 @@ import { GlobalContext } from "../Context/GlobalContext.jsx";
 import AppReview from "../Components/User/AppReview.jsx";
 import AppAddReviewForm from "../Components/User/AppAddReviewForm.jsx";
 import AppMovieCardElements from "../Components/User/AppMovieCardelements.jsx";
+import AppMessage from "../Components/AppMessage.jsx"
 
 // Movie page: fetches a single movie by id and shows details + reviews
 export default function Movie() {
 
     const [movie, setMovie] = useState(null);
     const id = parseInt(useParams().id);
-    const { api_url, api_image } = useContext(GlobalContext);
+    const { api_url, api_image, message, setShowMessage, setMessage } = useContext(GlobalContext);
     const [addReview, setAddReview] = useState(false);
-
-    useEffect(() => {
-        // Fetch movie details when component mounts (or id changes)
+    
+    function handleHttpCall() {
         fetch(`${api_url}/api/movies/${id}`)
             .then(res => res.json())
             .then(data => {
                 setMovie(data);
             })
-    }, [id, api_url]);
+    }
+    // Fetch the movie from the API and store in state
+    useEffect(() => {
+        handleHttpCall()
+    }, [setShowMessage]);
 
     return (
         <div className="container my-5">
             <div className="card">
                 <div className="card-body shadow">
                     <div className="row g-4">
+
+                        {
+                            message && <AppMessage message={message}></AppMessage>
+                        }
 
                         <div className="col col-12 col-md-5 d-flex align-items-center justify-content-center">
                             <img src={api_image + movie?.image} alt="" className="img-fluid" />
@@ -43,10 +51,11 @@ export default function Movie() {
                         {
                             addReview &&
                             <div className="col col-12">
-                                <AppAddReviewForm 
-                                addReview={addReview}
-                                setAddReview={setAddReview}
-                                movie_id={movie?.id}
+                                <AppAddReviewForm
+                                    addReview={addReview}
+                                    setAddReview={setAddReview}
+                                    movie_id={movie?.id}
+                                    handleHttpCall={handleHttpCall}
                                 />
                             </div>
                         }
